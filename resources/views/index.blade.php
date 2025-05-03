@@ -50,20 +50,9 @@
                     color: #6bc0fd;
                 }
                 .choice{
-                    margin-top: 2em;
-                    display: inline-block;
+                    display: flex;
+                    flex-direction: column;
                     align-items: center;
-                    justify-content: center;
-                }
-                .st_kku, .company, .admin{
-                    width: 9em;
-                    height: 3em;
-                    border: 1px solid #319deb;
-                    border-radius: 10px;
-                    box-shadow: 0 8px 10px rgba(0, 0, 0, .4);
-                    padding: 9px 0;
-                    margin-top: 1em;
-                    background-color:rgba(255, 255, 255, .4);
                 }
                 a{
                     text-decoration: none;
@@ -71,11 +60,20 @@
                     text-transform: uppercase;
                     font-size: medium;
                     color: #319deb;
+                    width: 10em;
+                    height: 3em;
+                    border: 1px solid #319deb;
+                    border-radius: 10px;
+                    box-shadow: 0 8px 10px rgba(0, 0, 0, .4);
+                    padding: .7em 1.5em;
+                    margin: 1em;
+                    background-color:rgba(255, 255, 255, .4);
                 }
-                .st_kku:hover, .company:hover, .admin:hover{
+                a:hover{
                     border: 2px solid rgba(49, 158, 235, 0.2);
                     box-shadow: 0 10px 15px rgba(0,0,0,.6);
                     background-color:rgba(115, 189, 241, 0.5);
+                    color: #ffffff;
                     
                 }
             
@@ -87,15 +85,9 @@
             <h1>login</h1>
             <h4>You must login before ues this web</h4>
             <div class="choice">
-                <div class="st_kku">
-                    <a href="{{url('kku-login')}}">KKU Student</a>
-                </div>
-                <div class="company">
-                    <a href="">Company</a>
-                </div>
-                <div class="admin">
-                    <a href="{{url('admin-login')}}">Admin</a>
-                </div>
+                <a href="{{url('kku-login')}}">KKU Student</a>
+                <a href="">Company</a>
+                <a href="{{url('admin-login')}}">Admin</a>
             </div>
         </div>
     </body>
