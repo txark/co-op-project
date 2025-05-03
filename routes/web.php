@@ -13,3 +13,11 @@ Route::get('/kku-login', function () {
 Route::get('/admin-login', function () {
     return view('admin_login');
 });
+
+Route::get('/comp-login', function () {
+    return view('comp_login');
+});
+
+Route::get('/comp-regis', function () {
+    return view('comp_regis');
+});

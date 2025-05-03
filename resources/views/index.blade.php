@@ -44,9 +44,11 @@
                     font-size: 3em;
                     text-transform: uppercase;
                     color: #319deb;
+                    font-weight: 600;
                 }
                 h4{
                     font-size: 1em;
+                    font-weight: 600;
                     color: #6bc0fd;
                 }
                 .choice{
@@ -59,6 +61,7 @@
                     text-align: center;
                     text-transform: uppercase;
                     font-size: medium;
+                    font-weight: 600;
                     color: #319deb;
                     width: 10em;
                     height: 3em;
@@ -74,7 +77,7 @@
                     box-shadow: 0 10px 15px rgba(0,0,0,.6);
                     background-color:rgba(115, 189, 241, 0.5);
                     color: #ffffff;
-                    
+                    font-weight: 400;
                 }
             
             </style>
@@ -86,7 +89,7 @@
             <h4>You must login before ues this web</h4>
             <div class="choice">
                 <a href="{{url('kku-login')}}">KKU Student</a>
-                <a href="">Company</a>
+                <a href="{{url('comp-login')}}">Company</a>
                 <a href="{{url('admin-login')}}">Admin</a>
             </div>
         </div>
