@@ -1,19 +1,22 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminAuthController;
 
 Route::get('/', function () {
     return view('index');
-}); //call back f.
+})->name('index.page'); //call back f.
 
+// Student Zone
 Route::get('/kku-login', function () {
     return view('kku_login');
 });
 
-Route::get('/admin-login', function () {
-    return view('admin_login');
-});
+// Admin Zone
+Route::get('/admin-login', [AdminAuthController::class, 'loginForm'])->name('admin.login.form');
+Route::post('/admin-login', [AdminAuthController::class, 'login'])->name('admin.login');
 
+// Company Zone
 Route::get('/comp-login', function () {
     return view('comp_login');
 });

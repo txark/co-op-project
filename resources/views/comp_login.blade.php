@@ -107,7 +107,7 @@
             align-items: center;
             border: none;
         }
-        #btn{
+        .sign-btn{
             text-decoration: none;
             text-align: center;
             text-transform: uppercase;
@@ -121,7 +121,7 @@
             padding: .5em 1em;
             margin-top: 1em;
         }
-        #btn:hover{
+        .sign-btn:hover{
             border: 2px solid rgba(49, 158, 235, 0.2);
             background-color:rgba(115, 189, 241, 0.5);
             color: #ffffff;
@@ -155,7 +155,7 @@
                 </span>
             </div>
             <div class="btn">
-                <a href="" id="btn">sing in</a>
+                <a href="" class="sign-btn">sing in</a>
                 <!-- <p><a href="{{url('comp-regis')}}" id="re_btn">register</a></p> -->
             </div>
         </form>

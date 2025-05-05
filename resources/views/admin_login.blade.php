@@ -101,18 +101,19 @@
         #togglePass:hover{
             color: #319deb;
         }
-        .btn{
+        /* .btn{
             display: flex;
             flex-direction: column;
             align-items: center;
             border: none;
-        }
+        } */
         #btn{
             text-decoration: none;
             text-align: center;
             text-transform: uppercase;
             font-size: medium;
             color: #319deb;
+            align-items: center;
             width: 7em;
             height: 2.5em;
             border: 1px solid #319deb;
@@ -126,6 +127,12 @@
             background-color:rgba(115, 189, 241, 0.5);
             color: #ffffff;
         }
+        .error{
+            margin-top: .4em;
+            font-size: .9em;
+            font-weight: 500;
+            color:rgb(178, 42, 42);
+        }
 
     </Style>
 </head>
@@ -137,7 +144,8 @@
         <h1>welcome</h1>
         <h4 class="ln">admin login</h4>
         <h4>You must login before ues this web</h4>
-        <form action="login_form">
+        <form method="post" action="{{route('admin.login')}}">
+            @csrf
             <div class="form">
                 <label for="username">Username : </label> <br>
                 <input type="text" id="username" name="username" required>
@@ -149,9 +157,10 @@
                     <i class="fas fa-eye"></i>
                 </span>
             </div>
-            <div class="btn">
-                <a href="" id="btn">sign in</a>
-            </div>
+            <button type="submit" id="btn">sign in</button>
+            @error('login')
+                <div class="error">{{ $message }}</div>
+            @enderror
         </form>
     </div>
 
