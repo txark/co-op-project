@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\CompanyController;
 
 Route::get('/', function () {
     return view('index');
@@ -19,8 +20,7 @@ Route::post('/admin-login', [AdminAuthController::class, 'login'])->name('admin.
 // Company Zone
 Route::get('/comp-login', function () {
     return view('comp_login');
-});
+})->name('comp.login');
 
-Route::get('/comp-regis', function () {
-    return view('comp_regis');
-});
+Route::get('/comp-regis', [CompanyController::class, 'regisForm']);
+Route::post('/comp-regis', [CompanyController::class, 'registerList'])->name('register.list');

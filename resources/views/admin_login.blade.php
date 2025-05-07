@@ -131,7 +131,7 @@
             margin-top: .4em;
             font-size: .9em;
             font-weight: 500;
-            color:rgb(178, 42, 42);
+            color: #b22a2a;
         }
 
     </Style>
@@ -177,14 +177,6 @@
                 toggleIcon.innerHTML = '<i class="fas fa-eye"></i>';
             }
         }
-
-        // ตรวจสอบการเข้าสู่ระบบ
-        // document.getElementById('login_form').addEventListener('btn', function(event) {
-        //     event.preventDefault();
-        //     const username = document.getElementById('username').value;
-        //     const password = document.getElementById('password').value;
-        //     alert(`ชื่อผู้ใช้: ${username} \n รหัสผ่าน: ${password} (รหัสผ่านจะถูกส่งไปยังเซิร์ฟจริงในระบบที่ใช้งานได้)`);
-        // });
     </script>
 </body>
 </html>

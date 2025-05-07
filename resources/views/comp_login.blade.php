@@ -7,10 +7,10 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <lik href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
+    
     <!--Style-->
     <style>
        *{
@@ -34,7 +34,7 @@
             border-radius: 20px;
             box-shadow: 0 30px 50px rgba(0, 0, 0, .4);
             width: 25em;
-            height: 27em;
+            height: 28em;
             background-color:rgba(255, 255, 255, 0.6);
         }
         .home{
@@ -101,18 +101,14 @@
         #togglePass:hover{
             color: #319deb;
         }
-        .btn{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            border: none;
-        }
-        .sign-btn{
+        #sign-btn{
             text-decoration: none;
             text-align: center;
+            
             text-transform: uppercase;
             font-size: medium;
             color: #319deb;
+            align-items: center;
             width: 7em;
             height: 2.5em;
             border: 1px solid #319deb;
@@ -121,10 +117,28 @@
             padding: .5em 1em;
             margin-top: 1em;
         }
-        .sign-btn:hover{
+        #sign-btn:hover{
             border: 2px solid rgba(49, 158, 235, 0.2);
             background-color:rgba(115, 189, 241, 0.5);
             color: #ffffff;
+        }
+        .signup{
+            margin-top: .5em;
+            font-size: small;
+            color:rgb(135, 148, 159);
+        }
+        span{
+            font-weight: 500;
+            margin-right: .5em;
+        }
+        #up-btn{
+            text-decoration: none;
+            text-transform: uppercase;
+            color: #319deb;
+        }
+        #up-btn:hover{
+            text-decoration: underline;
+            color: #23527c;
         }
         /* #re_btn{
             font-size: small;
@@ -154,9 +168,10 @@
                     <i class="fas fa-eye"></i>
                 </span>
             </div>
-            <div class="btn">
-                <a href="" class="sign-btn">sing in</a>
-                <!-- <p><a href="{{url('comp-regis')}}" id="re_btn">register</a></p> -->
+            <button type="submit" id="sign-btn">sign in</button>
+            <div class="signup">
+                <span>Don't have an account?</span>
+                <a href="{{url('/comp-regis')}}" id="up-btn">sign up</a>
             </div>
         </form>
     </div>
