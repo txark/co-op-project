@@ -6,17 +6,17 @@ use Illuminate\Http\Request;
 
 class AdminAuthController extends Controller
 {
-    public function showLoginForm()
+    public function loginForm()
     {
         return view('admin_login');
     }
 
     public function login(Request $request)
     {
-        $request->validate(([
+        $request->validate([
             'username'=>'required',
             'password'=>'required',
-        ]));
+        ]);
 
         $admin = \App\Models\Admin::where('admin_username', $request->username)->first(); //ดึงข้อมูล
 
