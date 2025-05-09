@@ -82,7 +82,7 @@
             position: relative;
         }
         .pass-wrapper input[type="password"] {
-            width: calc(100% - 5em);
+            width: calc(100% - 4.9em);
             padding: 5px;
             border: 1px solid #319deb;
             border-radius: 5px;
@@ -108,7 +108,6 @@
         #up-btn{
             text-decoration: none;
             text-align: center;
-            
             text-transform: uppercase;
             font-size: medium;
             color: #319deb;

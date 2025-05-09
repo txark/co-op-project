@@ -67,23 +67,25 @@
             color: #90CAF4;
             margin-top: -.5em;
         }
-        label{
-            display: block;
-            margin-bottom: -1.2em;
-            margin-top: 1.2em;
-            color: #319deb;
+        .form{
+            margin-bottom: 1em;
+            color: #288cd3;
+            text-align: left;
+            margin-left: 5em;
         }
-        input[type="text"]{
-            width: calc(100% - 8em);
+        input[type="text"], input[type="password"]{
+            width: 15em;
             padding: 5px;
             border: 1px solid #319deb;
             border-radius: 5px;
+            font-weight: 400;
+            color: #88898a;
         }
         .pass-wrapper{
             position: relative;
         }
         .pass-wrapper input[type="password"] {
-            width: calc(100% - 8em);
+            width: calc(100% - 4.9em);
             padding: 5px;
             border: 1px solid #319deb;
             border-radius: 5px;
@@ -91,8 +93,8 @@
         }
         #togglePass{
             position: absolute;
-            top: 3em;
-            left: 19em;
+            top: 2.7em;
+            left: 13em;
             transform: translateY(-50%);
             cursor: pointer;
             user-select: none;/* ป้องกันการเลือกข้อความเมื่อคลิก*/
@@ -101,12 +103,6 @@
         #togglePass:hover{
             color: #319deb;
         }
-        /* .btn{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            border: none;
-        } */
         #btn{
             text-decoration: none;
             text-align: center;
@@ -165,18 +161,45 @@
     </div>
 
     <script>
-        function togglePass() {
-            const passwordInput = document.getElementById("password");
-            const toggleIcon = document.getElementById("togglePass");
+        document.addEventListener('DOMContentLoaded', function() {
+            const passwordInput = document.getElementById('password');
+            const togglePassSpan = document.getElementById('togglePass');
+            const confirmPasswordInput = document.getElementById('pass_conf');
+            const toggleConfirmPassSpan = document.getElementById('toggleConPass');
 
-            if (passwordInput.type === "password") {
-                passwordInput.type = "text"
-                toggleIcon.innerHTML = '<i class="fas fa-eye"></i>';
-            } else {
-                passwordInput.type = "password";
-                toggleIcon.innerHTML = '<i class="fas fa-eye"></i>';
+            // ฟังก์ชันสำหรับแสดง/ซ่อนรหัสผ่าน
+            function showPassword(input, icon) {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
             }
-        }
+
+            function hidePassword(input, icon) {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+
+            // Event Listener สำหรับ Password
+            togglePassSpan.addEventListener('mouseover', function() {
+                showPassword(passwordInput, this.querySelector('i'));
+            });
+
+            togglePassSpan.addEventListener('mouseout', function() {
+                hidePassword(passwordInput, this.querySelector('i'));
+            });
+
+            // Event Listener สำหรับ Confirm Password (ถ้ามี)
+            if (toggleConfirmPassSpan && confirmPasswordInput) {
+                toggleConfirmPassSpan.addEventListener('mouseover', function() {
+                    showPassword(confirmPasswordInput, this.querySelector('i'));
+                });
+
+                toggleConfirmPassSpan.addEventListener('mouseout', function() {
+                    hidePassword(confirmPasswordInput, this.querySelector('i'));
+                });
+            }
+        });
     </script>
 </body>
 </html>
