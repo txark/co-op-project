@@ -125,6 +125,11 @@
             background-color:rgba(115, 189, 241, 0.5);
             color: #ffffff;
         }
+        .error-mes ul{
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 0;
+        }
     </style>
 
 </head>
@@ -136,7 +141,7 @@
         <h1>welcome</h1>
         <h4>Create your account, If you don't have!</h4>
         @if ($errors->any())
-            <div style="color: #b22a2a;">
+            <div class="error-mes" style="color: #b22a2a;">
                 <ul>
                     @foreach($errors->all() as $error)
                         <li>{{$error}}</li>
@@ -145,7 +150,7 @@
             </div>
         @endif
 
-        <form action="{{route('register.list')}}" method="post">
+        <form action="{{route('comp.regis.list')}}" method="post">
             @csrf
             <div class="form">
                 <label for="name" >Name :</label><br>
@@ -163,8 +168,8 @@
                 </span>
             </div>
             <div class="form pass-wrapper">
-                <label for="pass_conf">Confirm Password :</label><br>
-                <input type="password" id="pass_conf" name="pass_conf" required>
+                <label for="password_confirmation">Confirm Password :</label><br>
+                <input type="password" id="pass_conf" name="password_confirmation" required>
                 <span id="toggleConPass">
                     <i class="fas fa-eye"></i>
                 </span>

@@ -22,5 +22,5 @@ Route::get('/comp-login', function () {
     return view('comp_login');
 })->name('comp.login');
 
-Route::get('/comp-regis', [CompanyController::class, 'regisForm']);
-Route::post('/comp-regis', [CompanyController::class, 'registerList'])->name('register.list');
+Route::get('/comp-regis', [CompanyController::class, 'regisForm'])->name('comp.register');
+Route::post('/comp-regis', [CompanyController::class, 'registerList'])->name('comp.regis.list');
