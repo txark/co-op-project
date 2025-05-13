@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,23 +8,28 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    
+
     <style>
-        *{
-            font-family: "Kanit",sans-serif;
+        * {
+            font-family: "Kanit", sans-serif;
             font-weight: 600;
         }
-        body{
+
+        body {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background : url(https://www.pixel4k.com/wp-content/uploads/2022/08/blue-lines-digital-4k_1660761678-2048x1152.jpg);
+            background: url(https://www.pixel4k.com/wp-content/uploads/2022/08/blue-lines-digital-4k_1660761678-2048x1152.jpg);
         }
-        .container{
+
+        .container {
             padding: 3.5em 0;
             display: flexbox;
             flex-direction: column;
@@ -34,9 +40,10 @@
             box-shadow: 0 30px 50px rgba(0, 0, 0, .4);
             width: 25em;
             height: 35em;
-            background-color:rgba(255, 255, 255, 0.6);
+            background-color: rgba(255, 255, 255, 0.6);
         }
-        .home{
+
+        .home {
             position: relative;
             top: -2em;
             left: -8.2em;
@@ -48,29 +55,36 @@
             border-radius: 5px;
             z-index: 10;
         }
-        .home:hover{
+
+        .home:hover {
             color: #23527c;
         }
-        h1{
+
+        h1 {
             font-size: 2.7em;
             text-transform: uppercase;
             color: #319deb;
             margin-top: -.7em;
         }
-        h4{
+
+        h4 {
             font-size: 1em;
             color: #6ab9f0;
             margin-top: -.5em;
             margin-bottom: 1.2em;
-            
+
         }
-        .form{
+
+        .form {
             margin-bottom: 1em;
             color: #288cd3;
             text-align: left;
             margin-left: 5em;
         }
-        input[type="text"], input[type="password"], input[type="email"]{
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
             width: 15em;
             padding: 5px;
             border: 1px solid #319deb;
@@ -78,9 +92,11 @@
             font-weight: 400;
             color: #88898a;
         }
-        .pass-wrapper{
+
+        .pass-wrapper {
             position: relative;
         }
+
         .pass-wrapper input[type="password"] {
             width: calc(100% - 4.9em);
             padding: 5px;
@@ -88,24 +104,31 @@
             border-radius: 5px;
             position: relative;
         }
-        #togglePass, #toggleConPass{
+
+        #togglePass,
+        #toggleConPass {
             position: absolute;
             top: 2.6em;
             left: 13em;
             transform: translateY(-50%);
             cursor: pointer;
-            user-select: none;/* ป้องกันการเลือกข้อความเมื่อคลิก*/
-            color:rgba(150, 150, 150, 0.7);
+            user-select: none;
+            /* ป้องกันการเลือกข้อความเมื่อคลิก*/
+            color: rgba(150, 150, 150, 0.7);
         }
-        #togglePass:hover, #toggleConPass:hover{
+
+        #togglePass:hover,
+        #toggleConPass:hover {
             color: #319deb;
         }
-        input::placeholder{
+
+        input::placeholder {
             font-size: 1em;
             font-weight: 400;
             color: #88898a;
         }
-        #up-btn{
+
+        #up-btn {
             text-decoration: none;
             text-align: center;
             text-transform: uppercase;
@@ -116,16 +139,18 @@
             height: 2.5em;
             border: 1px solid #319deb;
             border-radius: 5px;
-            background-color:rgba(255, 255, 255);
+            background-color: rgba(255, 255, 255);
             padding: .5em 1em;
             margin-top: 1em;
         }
-        #up-btn:hover{
+
+        #up-btn:hover {
             border: 2px solid rgba(49, 158, 235, 0.2);
-            background-color:rgba(115, 189, 241, 0.5);
+            background-color: rgba(115, 189, 241, 0.5);
             color: #ffffff;
         }
-        .error-mes ul{
+
+        .error-mes ul {
             list-style-type: none;
             padding-left: 0;
             margin-left: 0;
@@ -133,27 +158,28 @@
     </style>
 
 </head>
+
 <body>
     <div class="container">
-        <a href="{{url('/')}}" class="home">
-                <i class="fas fa-home"></i>
+        <a href="{{ url('/') }}" class="home">
+            <i class="fas fa-home"></i>
         </a>
         <h1>welcome</h1>
         <h4>Create your account, If you don't have!</h4>
         @if ($errors->any())
             <div class="error-mes" style="color: #b22a2a;">
                 <ul>
-                    @foreach($errors->all() as $error)
-                        <li>{{$error}}</li>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
                     @endforeach
                 </ul>
             </div>
         @endif
 
-        <form action="{{route('comp.regis.list')}}" method="post">
+        <form action="{{ route('comp.regis.list') }}" method="post">
             @csrf
             <div class="form">
-                <label for="name" >Name :</label><br>
+                <label for="name">Name :</label><br>
                 <input type="text" id="name" name="name" placeholder="Enter Your Company Name" required>
             </div>
             <div class="form">
@@ -178,7 +204,7 @@
             <button type="submit" id="up-btn">sign up</button>
         </form>
     </div>
-        
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const passwordInput = document.getElementById('password');
@@ -218,7 +244,29 @@
                     hidePassword(confirmPasswordInput, this.querySelector('i'));
                 });
             }
+
+            // Show success message if available
+            @if (session('success'))
+                alert("{{ session('success') }}");
+                window.location.href = '{{ url('comp-login') }}'; // Redirect after alert
+            @endif
+
+            // Show error messages if any exist
+            @if (session('error'))
+                alert("{{ session('error') }}");
+            @endif
+
+            // Display validation errors
+            @if ($errors->any())
+                let errorMessages = '';
+                @foreach ($errors->all() as $error)
+                    errorMessages += '{{ $error }}\n';
+                @endforeach
+                alert(errorMessages); // Display the errors in a pop-up
+            @endif
         });
     </script>
+
 </body>
+
 </html>

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Company;
@@ -15,43 +14,53 @@ class CompanyController extends Controller
     {
         return view('comp_regis');
     }
+
     public function registerList(Request $request)
     {
-        //  Validata ข้อมูลที่ส่งมา
-        // dd($request->all());
+        // Validate the incoming request
         $validator = Validator::make($request->all(), [
-            'name'=>'required|string|max:255',
-            'email'=>'required|string|email|max:100|unique:company,company_email',
-            'password'=>'required|string|min:8|confirmed',
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:100|unique:company,company_email', // ตรวจสอบอีเมลซ้ำในฐานข้อมูล
+            'password' => 'required|string|min:8|confirmed', // รหัสผ่านต้องมีความยาวอย่างน้อย 8 ตัวอักษรและยืนยันการป้อนรหัสผ่าน
         ], [
-            'email.unique'=>'The email address is already in use',
-            'password.confirmed' => 'The password confirmation does not match.',
+            'email.unique' => 'อีเมลนี้ถูกใช้งานแล้ว', // ข้อความเมื่ออีเมลซ้ำ
+            'password.confirmed' => 'การยืนยันรหัสผ่านไม่ตรงกัน', // ข้อความเมื่อรหัสผ่านยืนยันไม่ตรงกัน
         ]);
+
+        // หากตรวจพบข้อผิดพลาดในการ validate
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-         //Begin a database transaction
+
+        // Begin database transaction
         DB::beginTransaction();
-            try {
-                //Create a new company record
-                Company::create([
-                    'company_name'=>$request->name,
-                    'company_email'=>$request->email,
-                    'company_password'=>Hash::make($request->password),
-                ]);
-                // dd($company);
-                DB::commit(); // Commit transaction
 
-                //redirect to other page or login page
-                return redirect('comp-login')->with('success', 'Registration successful! Please log in.');
-            } catch (\Exception $e) {
-                //Rollback in case of an error
-                DB::rollBack();
+        
+        
+        try {
+            // Create a new company record
 
-                //Log error
-                Log::error('Error during company registration: '.$e->getMessage());
-                //Redirect back with an error message
-            return redirect()->back()->with('error', 'An error occurred during registration. Please try again.');
-            }
+            $companyId = str_pad(Company::count() + 1, 4, '0', STR_PAD_LEFT); // สร้าง company_id โดยใช้ฟังก์ชัน str_pad เพื่อให้มีความยาว 4 หลัก
+            Company::create([
+                'company_id' => $companyId, // สร้าง company_id โดยใช้ฟังก์ชัน str_pad เพื่อให้มีความยาว 4 หลัก
+                'company_name' => $request->name, // บันทึกชื่อบริษัท
+                'company_email' => $request->email, // บันทึกอีเมล
+                'company_password' => Hash::make($request->password), // บันทึกรหัสผ่านที่เข้ารหัส
+            ]);
+
+            DB::commit(); // Commit transaction
+
+            // Redirect to login page with success message
+            return redirect('comp-login')->with('success', 'ลงทะเบียนสำเร็จ! กรุณาล็อกอิน.');
+        } catch (\Exception $e) {
+            // Rollback in case of an error
+            DB::rollBack();
+
+            // Log the error
+            Log::error('Error during company registration: ' . $e->getMessage());
+
+            // Redirect back with an error message
+            return redirect()->back()->with('error', 'เกิดข้อผิดพลาดในการลงทะเบียน โปรดลองใหม่อีกครั้ง');
+        }
     }
 }
