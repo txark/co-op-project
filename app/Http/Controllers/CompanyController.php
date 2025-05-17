@@ -11,6 +11,33 @@ use Illuminate\Support\Facades\Log;
 
 class CompanyController extends Controller
 {
+    // function Company_login
+    public function loginForm()
+    {
+        return view('comp_login');
+    }
+    public function loginComp(Request $request)
+    {
+        $request->validate([
+            'email'=>'required|email',
+            'password'=>'required',
+        ]);
+        // dd($request->all()); // ดูข้อมูลที่ส่งมา
+        $company = \App\Models\Company::where('company_email', $request->email)->first(); //ดึงข้อมูล
+        // dd($company); //ดูข้อมูลบริษัทที่ดึงมา
+        //ตรวสอบข้อมูล
+        if($company && Hash::check($request->password, $company->company_password)) {
+            // dd('Password Matched!'); // ตรวจสอบว่ารหัสผ่านตรงกันหรือไม่
+            \Illuminate\Support\Facades\Auth::guard('company')->login($company);
+            return redirect()->to('/'); //เปลี้ยนไปหน้าอื่น
+        }else{
+            // dd('Login failed'); //ตรวจสอบว่าเข้าเงื่อนไขหรือไม่
+            // dd('Password Not Matched!'); // ตรวจสอบว่ารหัสผ่านไม่ตรงกันหรือไม่
+            return back()->withErrors(['login'=>'อีเมลหรือรหัสผ่านไม่ถูกต้อง']);
+        }
+    }
+
+    // function Company_register
     public function regisForm()
     {
         return view('comp_regis');
@@ -33,8 +60,22 @@ class CompanyController extends Controller
          //Begin a database transaction
         DB::beginTransaction();
             try {
-                //Create a new company record
+                //สร้างCompany_id ในรูปแบบ Cxxxx
+                $lastCompany = Company::orderBy('company_id', 'desc')->first();
+                $newIdNum = 1;
+                if ($lastCompany){
+                    $lastIdNum = intval(substr($lastCompany->company_id,1));
+                    $newIdNum =$lastIdNum+1;
+                }
+                $companyId = 'C'.str_pad($newIdNum, 4, '0', STR_PAD_LEFT);
+                // ตรสจสอบความไม่ซ้ำซ้อนของ company_id (กันกรณีฉุกเฉิน)
+                while (Company::where('company_id', $companyId)->exists()) {
+                    $newIdNum++;
+                    $companyId = 'C'.str_pad($newIdNum, 4, '0', STR_PAD_LEFT);
+                }
+                // Create a new company record
                 Company::create([
+                    'company_id'=>$companyId, //กำหนดcompany_id ตรงนี้
                     'company_name'=>$request->name,
                     'company_email'=>$request->email,
                     'company_password'=>Hash::make($request->password),

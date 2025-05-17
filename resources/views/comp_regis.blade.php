@@ -103,7 +103,7 @@
         input::placeholder{
             font-size: 1em;
             font-weight: 400;
-            color: #88898a;
+            color: rgba(150, 150, 150, 0.7);
         }
         #up-btn{
             text-decoration: none;
@@ -174,7 +174,6 @@
                     <i class="fas fa-eye"></i>
                 </span>
             </div>
-
             <button type="submit" id="up-btn">sign up</button>
         </form>
     </div>

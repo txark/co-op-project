@@ -18,9 +18,8 @@ Route::get('/admin-login', [AdminAuthController::class, 'loginForm'])->name('adm
 Route::post('/admin-login', [AdminAuthController::class, 'login'])->name('admin.login');
 
 // Company Zone
-Route::get('/comp-login', function () {
-    return view('comp_login');
-})->name('comp.login');
+Route::get('/comp-login', [CompanyController::class, 'loginForm'])->name('comp.login.form');
+Route::post('/comp-login', [CompanyController::class, 'loginComp'])->name('comp.login');
 
 Route::get('/comp-regis', [CompanyController::class, 'regisForm'])->name('comp.register');
 Route::post('/comp-regis', [CompanyController::class, 'registerList'])->name('comp.regis.list');

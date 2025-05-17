@@ -98,10 +98,15 @@
             transform: translateY(-50%);
             cursor: pointer;
             user-select: none;/* ป้องกันการเลือกข้อความเมื่อคลิก*/
-            color:rgba(150, 150, 150, 0.7);
+            color: rgba(150, 150, 150, 0.7);
         }
         #togglePass:hover{
             color: #319deb;
+        }
+        input::placeholder{
+            font-size: 1em;
+            font-weight: 400;
+            color:rgba(150, 150, 150, 0.7);
         }
         #sign-btn{
             text-decoration: none;
@@ -158,10 +163,19 @@
         <h1>welcome</h1>
         <h4 class="ln">company login</h4>
         <h4>You must login before ues this web</h4>
-        <form action="login_form">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{$error}}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        <form action="{{route('comp.login')}}" method="post">
             <div class="form">
                 <label for="username">Username : </label><br>
-                <input type="text" id="username" name="username" required>
+                <input type="text" id="username" name="email" placeholder="xxx@xmail.com" required>
             </div>
             <div class="form pass-wrapper">
                 <label for="password">Password : </label> <br>
@@ -170,7 +184,8 @@
                     <i class="fas fa-eye"></i>
                 </span>
             </div>
-            <button type="submit" id="sign-btn">sign in</button>
+                @csrf
+                <button type="submit" id="sign-btn">sign in</button>
             <div class="signup">
                 <span>Don't have an account?</span>
                 <a href="{{url('/comp-regis')}}" id="up-btn">sign up</a>
